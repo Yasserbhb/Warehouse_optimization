@@ -1,0 +1,557 @@
+[
+  {
+    "id": "WH_004",
+    "name": "Wireless Headphones",
+    "category": "electronics",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 19.48435913540969,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 183.4683794275114,
+    "storage_requirements": [
+      "climate_controlled"
+    ],
+    "popularity_rank": "high"
+  },
+  {
+    "id": "WH_016",
+    "name": "Jeans",
+    "category": "clothing",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 17.41425654654876,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 83.6652491235277,
+    "storage_requirements": [],
+    "popularity_rank": "high"
+  },
+  {
+    "id": "WH_002",
+    "name": "Smartphone",
+    "category": "electronics",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 14.750058636738238,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 661.240056919359,
+    "storage_requirements": [
+      "climate_controlled"
+    ],
+    "popularity_rank": "high"
+  },
+  {
+    "id": "WH_015",
+    "name": "Running Shoes",
+    "category": "clothing",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 14.09498873269492,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 122.47921730074265,
+    "storage_requirements": [],
+    "popularity_rank": "high"
+  },
+  {
+    "id": "WH_001",
+    "name": "Laptop Computer",
+    "category": "electronics",
+    "size": "medium",
+    "weight_class": "medium",
+    "base_daily_picks": 12.778853596915768,
+    "seasonal_pattern": "back_to_school",
+    "seasonal_multiplier": 2.0,
+    "unit_cost": 814.4928859185696,
+    "storage_requirements": [
+      "climate_controlled"
+    ],
+    "popularity_rank": "high"
+  },
+  {
+    "id": "WH_026",
+    "name": "Novel Fiction",
+    "category": "books",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 12.040361934233767,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 14.119102078252922,
+    "storage_requirements": [],
+    "popularity_rank": "high"
+  },
+  {
+    "id": "WH_034",
+    "name": "Screwdriver Set",
+    "category": "tools",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 11.058096143928209,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 36.2477377507445,
+    "storage_requirements": [],
+    "popularity_rank": "high"
+  },
+  {
+    "id": "WH_033",
+    "name": "Hammer",
+    "category": "tools",
+    "size": "small",
+    "weight_class": "medium",
+    "base_daily_picks": 9.785703840379618,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 26.36944755790813,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_003",
+    "name": "Tablet Device",
+    "category": "electronics",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 8.772942428328026,
+    "seasonal_pattern": "holiday_peak",
+    "seasonal_multiplier": 2.2,
+    "unit_cost": 341.6518127709373,
+    "storage_requirements": [
+      "climate_controlled"
+    ],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_006",
+    "name": "Smart Watch",
+    "category": "electronics",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 8.537275949607206,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 400.4184123376928,
+    "storage_requirements": [
+      "climate_controlled"
+    ],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_027",
+    "name": "Children's Book Set",
+    "category": "books",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 8.233955644098225,
+    "seasonal_pattern": "holiday_peak",
+    "seasonal_multiplier": 2.2,
+    "unit_cost": 43.48236339252454,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_031",
+    "name": "Power Drill",
+    "category": "tools",
+    "size": "medium",
+    "weight_class": "medium",
+    "base_daily_picks": 7.77904670127319,
+    "seasonal_pattern": "spring_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 205.58971039464404,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_025",
+    "name": "Textbook Mathematics",
+    "category": "books",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 7.771368888528801,
+    "seasonal_pattern": "back_to_school",
+    "seasonal_multiplier": 2.0,
+    "unit_cost": 194.58355749444544,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_036",
+    "name": "Coffee Machine",
+    "category": "kitchen",
+    "size": "medium",
+    "weight_class": "medium",
+    "base_daily_picks": 7.3219656871726535,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 163.276405610623,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_023",
+    "name": "Yoga Mat",
+    "category": "sports",
+    "size": "medium",
+    "weight_class": "light",
+    "base_daily_picks": 7.259583953847255,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 28.387279736393456,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_017",
+    "name": "Sweater",
+    "category": "clothing",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 6.972456182909402,
+    "seasonal_pattern": "autumn_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 54.72021140826576,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_014",
+    "name": "Summer Dress",
+    "category": "clothing",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 6.385491686760296,
+    "seasonal_pattern": "summer_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 55.1514030892479,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_005",
+    "name": "Gaming Console",
+    "category": "electronics",
+    "size": "medium",
+    "weight_class": "medium",
+    "base_daily_picks": 6.243843639370541,
+    "seasonal_pattern": "holiday_peak",
+    "seasonal_multiplier": 2.2,
+    "unit_cost": 452.9706623493682,
+    "storage_requirements": [
+      "climate_controlled"
+    ],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_038",
+    "name": "Blender",
+    "category": "kitchen",
+    "size": "medium",
+    "weight_class": "medium",
+    "base_daily_picks": 5.71087733058976,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 88.11158295528983,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_013",
+    "name": "Winter Coat",
+    "category": "clothing",
+    "size": "medium",
+    "weight_class": "light",
+    "base_daily_picks": 5.514426144413562,
+    "seasonal_pattern": "winter_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 125.74178498383809,
+    "storage_requirements": [
+      "seasonal_storage"
+    ],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_024",
+    "name": "Football",
+    "category": "sports",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 5.502002858819458,
+    "seasonal_pattern": "autumn_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 23.88031206834424,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_021",
+    "name": "Tennis Racket",
+    "category": "sports",
+    "size": "medium",
+    "weight_class": "light",
+    "base_daily_picks": 5.209143672429847,
+    "seasonal_pattern": "summer_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 136.36563986090258,
+    "storage_requirements": [],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_029",
+    "name": "Art Supplies Kit",
+    "category": "books",
+    "size": "medium",
+    "weight_class": "light",
+    "base_daily_picks": 4.942277296396194,
+    "seasonal_pattern": "back_to_school",
+    "seasonal_multiplier": 2.0,
+    "unit_cost": 83.65557051360969,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_009",
+    "name": "Garden Hose",
+    "category": "home_garden",
+    "size": "medium",
+    "weight_class": "medium",
+    "base_daily_picks": 4.740881244081393,
+    "seasonal_pattern": "spring_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 35.614681255763614,
+    "storage_requirements": [],
+    "popularity_rank": "medium"
+  },
+  {
+    "id": "WH_037",
+    "name": "Microwave Oven",
+    "category": "kitchen",
+    "size": "large",
+    "weight_class": "heavy",
+    "base_daily_picks": 4.552735252945338,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 192.57748587617752,
+    "storage_requirements": [
+      "ground_level_only"
+    ],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_020",
+    "name": "Bicycle",
+    "category": "sports",
+    "size": "large",
+    "weight_class": "heavy",
+    "base_daily_picks": 4.323413800621554,
+    "seasonal_pattern": "spring_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 609.272102726521,
+    "storage_requirements": [
+      "ground_level_only"
+    ],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_032",
+    "name": "Tool Box Set",
+    "category": "tools",
+    "size": "large",
+    "weight_class": "heavy",
+    "base_daily_picks": 4.313899487549293,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 311.06648583089054,
+    "storage_requirements": [
+      "ground_level_only"
+    ],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_028",
+    "name": "Professional Manual",
+    "category": "books",
+    "size": "medium",
+    "weight_class": "light",
+    "base_daily_picks": 3.696070770493187,
+    "seasonal_pattern": "all_year",
+    "seasonal_multiplier": 1.0,
+    "unit_cost": 91.95413983999444,
+    "storage_requirements": [],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_030",
+    "name": "Calculator Scientific",
+    "category": "books",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 3.426804987523856,
+    "seasonal_pattern": "back_to_school",
+    "seasonal_multiplier": 2.0,
+    "unit_cost": 126.85608257481535,
+    "storage_requirements": [],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_039",
+    "name": "Cookie Cutters Set",
+    "category": "kitchen",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 2.929095179481087,
+    "seasonal_pattern": "holiday_peak",
+    "seasonal_multiplier": 2.2,
+    "unit_cost": 19.825489706644422,
+    "storage_requirements": [],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_018",
+    "name": "Swimwear",
+    "category": "clothing",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 2.857068754416707,
+    "seasonal_pattern": "summer_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 40.40622096892327,
+    "storage_requirements": [],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_007",
+    "name": "Space Heater",
+    "category": "home_garden",
+    "size": "medium",
+    "weight_class": "medium",
+    "base_daily_picks": 2.853071939367727,
+    "seasonal_pattern": "winter_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 140.9557318452981,
+    "storage_requirements": [
+      "seasonal_storage"
+    ],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_010",
+    "name": "Lawn Mower",
+    "category": "home_garden",
+    "size": "large",
+    "weight_class": "heavy",
+    "base_daily_picks": 2.4188609133556533,
+    "seasonal_pattern": "spring_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 405.5758753735061,
+    "storage_requirements": [
+      "ground_level_only"
+    ],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_008",
+    "name": "Air Conditioner",
+    "category": "home_garden",
+    "size": "large",
+    "weight_class": "heavy",
+    "base_daily_picks": 2.3997688755590465,
+    "seasonal_pattern": "summer_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 302.6863989532318,
+    "storage_requirements": [
+      "ground_level_only"
+    ],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_022",
+    "name": "Camping Tent",
+    "category": "sports",
+    "size": "medium",
+    "weight_class": "medium",
+    "base_daily_picks": 2.3557965513030936,
+    "seasonal_pattern": "summer_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 191.5659397681571,
+    "storage_requirements": [],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_040",
+    "name": "Stand Mixer",
+    "category": "kitchen",
+    "size": "large",
+    "weight_class": "heavy",
+    "base_daily_picks": 2.229760332996105,
+    "seasonal_pattern": "holiday_peak",
+    "seasonal_multiplier": 2.2,
+    "unit_cost": 379.7207073605033,
+    "storage_requirements": [
+      "ground_level_only"
+    ],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_019",
+    "name": "Ski Equipment Set",
+    "category": "sports",
+    "size": "large",
+    "weight_class": "heavy",
+    "base_daily_picks": 2.0588093285059896,
+    "seasonal_pattern": "winter_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 818.9529233387748,
+    "storage_requirements": [
+      "ground_level_only",
+      "seasonal_storage"
+    ],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_035",
+    "name": "Chainsaw",
+    "category": "tools",
+    "size": "large",
+    "weight_class": "heavy",
+    "base_daily_picks": 1.3309060961181638,
+    "seasonal_pattern": "autumn_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 381.4097345963043,
+    "storage_requirements": [
+      "ground_level_only"
+    ],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_011",
+    "name": "Christmas Lights",
+    "category": "home_garden",
+    "size": "small",
+    "weight_class": "light",
+    "base_daily_picks": 1.1116385036656158,
+    "seasonal_pattern": "holiday_peak",
+    "seasonal_multiplier": 2.2,
+    "unit_cost": 25.980300696151158,
+    "storage_requirements": [],
+    "popularity_rank": "low"
+  },
+  {
+    "id": "WH_012",
+    "name": "Patio Furniture Set",
+    "category": "home_garden",
+    "size": "large",
+    "weight_class": "heavy",
+    "base_daily_picks": 0.8805010330359837,
+    "seasonal_pattern": "spring_heavy",
+    "seasonal_multiplier": 1.9,
+    "unit_cost": 558.6482290184142,
+    "storage_requirements": [
+      "ground_level_only"
+    ],
+    "popularity_rank": "low"
+  }
+]

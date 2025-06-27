@@ -1,0 +1,248 @@
+{
+  "configuration": {
+    "warehouse_width": 30,
+    "warehouse_depth": 30,
+    "warehouse_levels": 3,
+    "num_items": 40,
+    "num_pickers": 4
+  },
+  "item_locations": {
+    "WH_004": [
+      3,
+      12,
+      1
+    ],
+    "WH_016": [
+      3,
+      12,
+      1
+    ],
+    "WH_002": [
+      3,
+      12,
+      1
+    ],
+    "WH_015": [
+      3,
+      12,
+      1
+    ],
+    "WH_001": [
+      3,
+      12,
+      2
+    ],
+    "WH_026": [
+      3,
+      12,
+      2
+    ],
+    "WH_034": [
+      3,
+      12,
+      2
+    ],
+    "WH_033": [
+      3,
+      18,
+      1
+    ],
+    "WH_003": [
+      3,
+      18,
+      1
+    ],
+    "WH_006": [
+      3,
+      18,
+      1
+    ],
+    "WH_027": [
+      3,
+      18,
+      1
+    ],
+    "WH_031": [
+      3,
+      18,
+      2
+    ],
+    "WH_025": [
+      3,
+      18,
+      2
+    ],
+    "WH_036": [
+      3,
+      11,
+      1
+    ],
+    "WH_023": [
+      3,
+      11,
+      1
+    ],
+    "WH_017": [
+      3,
+      11,
+      2
+    ],
+    "WH_014": [
+      3,
+      11,
+      2
+    ],
+    "WH_005": [
+      3,
+      11,
+      2
+    ],
+    "WH_038": [
+      3,
+      19,
+      1
+    ],
+    "WH_013": [
+      3,
+      19,
+      1
+    ],
+    "WH_024": [
+      3,
+      19,
+      2
+    ],
+    "WH_021": [
+      3,
+      19,
+      2
+    ],
+    "WH_029": [
+      3,
+      19,
+      3
+    ],
+    "WH_009": [
+      4,
+      12,
+      1
+    ],
+    "WH_037": [
+      4,
+      18,
+      1
+    ],
+    "WH_020": [
+      3,
+      10,
+      1
+    ],
+    "WH_032": [
+      3,
+      20,
+      1
+    ],
+    "WH_028": [
+      3,
+      20,
+      2
+    ],
+    "WH_030": [
+      3,
+      20,
+      2
+    ],
+    "WH_039": [
+      3,
+      20,
+      2
+    ],
+    "WH_018": [
+      3,
+      20,
+      3
+    ],
+    "WH_007": [
+      4,
+      11,
+      1
+    ],
+    "WH_010": [
+      4,
+      19,
+      1
+    ],
+    "WH_008": [
+      3,
+      9,
+      1
+    ],
+    "WH_022": [
+      3,
+      9,
+      2
+    ],
+    "WH_040": [
+      3,
+      21,
+      1
+    ],
+    "WH_019": [
+      4,
+      10,
+      1
+    ],
+    "WH_035": [
+      4,
+      20,
+      1
+    ],
+    "WH_011": [
+      4,
+      20,
+      2
+    ],
+    "WH_012": [
+      3,
+      8,
+      1
+    ]
+  },
+  "simulation_results": {
+    "simulation_duration": 600.0,
+    "real_execution_time": 22.777015686035156,
+    "orders_processed": 0,
+    "total_distance": 0,
+    "total_wait_time": 0.0,
+    "picker_performance": [
+      {
+        "picker_id": "PICKER_01",
+        "orders_completed": 0,
+        "distance_traveled": 0,
+        "wait_time": 0.0,
+        "efficiency": 0.0
+      },
+      {
+        "picker_id": "PICKER_02",
+        "orders_completed": 0,
+        "distance_traveled": 0,
+        "wait_time": 0.0,
+        "efficiency": 0.0
+      },
+      {
+        "picker_id": "PICKER_03",
+        "orders_completed": 0,
+        "distance_traveled": 0,
+        "wait_time": 0.0,
+        "efficiency": 0.0
+      },
+      {
+        "picker_id": "PICKER_04",
+        "orders_completed": 0,
+        "distance_traveled": 0,
+        "wait_time": 0.0,
+        "efficiency": 0.0
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+ID,Name,Category,Size,Weight Class,Base Daily Picks,Seasonal Pattern,Seasonal Multiplier,Unit Cost,Popularity Rank,Storage Requirements
+WH_004,Wireless Headphones,electronics,small,light,19.48,all_year,1.00,$183.47,high,climate_controlled
+WH_016,Jeans,clothing,small,light,17.41,all_year,1.00,$83.67,high,
+WH_002,Smartphone,electronics,small,light,14.75,all_year,1.00,$661.24,high,climate_controlled
+WH_015,Running Shoes,clothing,small,light,14.09,all_year,1.00,$122.48,high,
+WH_001,Laptop Computer,electronics,medium,medium,12.78,back_to_school,2.00,$814.49,high,climate_controlled
+WH_026,Novel Fiction,books,small,light,12.04,all_year,1.00,$14.12,high,
+WH_034,Screwdriver Set,tools,small,light,11.06,all_year,1.00,$36.25,high,
+WH_033,Hammer,tools,small,medium,9.79,all_year,1.00,$26.37,medium,
+WH_003,Tablet Device,electronics,small,light,8.77,holiday_peak,2.20,$341.65,medium,climate_controlled
+WH_006,Smart Watch,electronics,small,light,8.54,all_year,1.00,$400.42,medium,climate_controlled
+WH_027,Children's Book Set,books,small,light,8.23,holiday_peak,2.20,$43.48,medium,
+WH_031,Power Drill,tools,medium,medium,7.78,spring_heavy,1.90,$205.59,medium,
+WH_025,Textbook Mathematics,books,small,light,7.77,back_to_school,2.00,$194.58,medium,
+WH_036,Coffee Machine,kitchen,medium,medium,7.32,all_year,1.00,$163.28,medium,
+WH_023,Yoga Mat,sports,medium,light,7.26,all_year,1.00,$28.39,medium,
+WH_017,Sweater,clothing,small,light,6.97,autumn_heavy,1.90,$54.72,medium,
+WH_014,Summer Dress,clothing,small,light,6.39,summer_heavy,1.90,$55.15,medium,
+WH_005,Gaming Console,electronics,medium,medium,6.24,holiday_peak,2.20,$452.97,medium,climate_controlled
+WH_038,Blender,kitchen,medium,medium,5.71,all_year,1.00,$88.11,medium,
+WH_013,Winter Coat,clothing,medium,light,5.51,winter_heavy,1.90,$125.74,low,seasonal_storage
+WH_024,Football,sports,small,light,5.50,autumn_heavy,1.90,$23.88,medium,
+WH_021,Tennis Racket,sports,medium,light,5.21,summer_heavy,1.90,$136.37,low,
+WH_029,Art Supplies Kit,books,medium,light,4.94,back_to_school,2.00,$83.66,medium,
+WH_009,Garden Hose,home_garden,medium,medium,4.74,spring_heavy,1.90,$35.61,medium,
+WH_037,Microwave Oven,kitchen,large,heavy,4.55,all_year,1.00,$192.58,low,ground_level_only
+WH_020,Bicycle,sports,large,heavy,4.32,spring_heavy,1.90,$609.27,low,ground_level_only
+WH_032,Tool Box Set,tools,large,heavy,4.31,all_year,1.00,$311.07,low,ground_level_only
+WH_028,Professional Manual,books,medium,light,3.70,all_year,1.00,$91.95,low,
+WH_030,Calculator Scientific,books,small,light,3.43,back_to_school,2.00,$126.86,low,
+WH_039,Cookie Cutters Set,kitchen,small,light,2.93,holiday_peak,2.20,$19.83,low,
+WH_018,Swimwear,clothing,small,light,2.86,summer_heavy,1.90,$40.41,low,
+WH_007,Space Heater,home_garden,medium,medium,2.85,winter_heavy,1.90,$140.96,low,seasonal_storage
+WH_010,Lawn Mower,home_garden,large,heavy,2.42,spring_heavy,1.90,$405.58,low,ground_level_only
+WH_008,Air Conditioner,home_garden,large,heavy,2.40,summer_heavy,1.90,$302.69,low,ground_level_only
+WH_022,Camping Tent,sports,medium,medium,2.36,summer_heavy,1.90,$191.57,low,
+WH_040,Stand Mixer,kitchen,large,heavy,2.23,holiday_peak,2.20,$379.72,low,ground_level_only
+WH_019,Ski Equipment Set,sports,large,heavy,2.06,winter_heavy,1.90,$818.95,low,ground_level_only; seasonal_storage
+WH_035,Chainsaw,tools,large,heavy,1.33,autumn_heavy,1.90,$381.41,low,ground_level_only
+WH_011,Christmas Lights,home_garden,small,light,1.11,holiday_peak,2.20,$25.98,low,
+WH_012,Patio Furniture Set,home_garden,large,heavy,0.88,spring_heavy,1.90,$558.65,low,ground_level_only
