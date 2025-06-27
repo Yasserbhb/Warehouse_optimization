@@ -253,7 +253,66 @@ class WarehouseSimulation:
         print(f"✅ Generated {len(orders)} realistic orders")
         return orders
     
+    def _find_pickup_position(self, shelf_x: int, shelf_y: int) -> tuple[int, int]:
+        """Find adjacent walkable position for picking from shelf"""
+        # Check all 4 adjacent positions
+        for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+            pickup_x, pickup_y = shelf_x + dx, shelf_y + dy
+            if self.warehouse.is_walkable(pickup_x, pickup_y):
+                return (pickup_x, pickup_y)
+        
+        # If no adjacent walkable position, find nearest walkable
+        for radius in range(2, 5):
+            for dx in range(-radius, radius + 1):
+                for dy in range(-radius, radius + 1):
+                    if abs(dx) + abs(dy) <= radius:
+                        pickup_x, pickup_y = shelf_x + dx, shelf_y + dy
+                        if self.warehouse.is_walkable(pickup_x, pickup_y):
+                            return (pickup_x, pickup_y)
+        
+        return (shelf_x, shelf_y)  # Fallback
+    
     def get_placed_items_for_orders(self) -> List[Dict]:
+        """Get list of placed items available for order generation"""
+        available_items = []
+        for item in self.items:
+            if item.id in self.item_locations:
+                storage_location = self.item_locations[item.id]
+                pickup_location = self._find_pickup_position(storage_location[0], storage_location[1])
+                
+                item_info = {
+                    'item_id': item.id,
+                    'item_name': item.name,
+                    'size': item.size,
+                    'weight_class': item.weight_class,
+                    'category': item.category,
+                    'daily_picks': item.base_daily_picks,
+                    'seasonal_pattern': item.seasonal_pattern,
+                    'location': (*pickup_location, storage_location[2]),  # Use pickup position
+                    'pick_time': random.uniform(15, 45)
+                }
+                available_items.append(item_info)
+        
+        return available_items
+    
+    def _find_pickup_position(self, shelf_x: int, shelf_y: int) -> tuple[int, int]:
+        """Find adjacent walkable position for picking from shelf"""
+        # Check all 4 adjacent positions
+        for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+            pickup_x, pickup_y = shelf_x + dx, shelf_y + dy
+            if self.warehouse.is_walkable(pickup_x, pickup_y):
+                return (pickup_x, pickup_y)
+        
+        # If no adjacent walkable position, find nearest walkable
+        for radius in range(2, 5):
+            for dx in range(-radius, radius + 1):
+                for dy in range(-radius, radius + 1):
+                    if abs(dx) + abs(dy) <= radius:
+                        pickup_x, pickup_y = shelf_x + dx, shelf_y + dy
+                        if self.warehouse.is_walkable(pickup_x, pickup_y):
+                            return (pickup_x, pickup_y)
+        
+        return (shelf_x, shelf_y)  # Fallback
         """Get list of placed items available for order generation"""
         available_items = []
         for item in self.items:

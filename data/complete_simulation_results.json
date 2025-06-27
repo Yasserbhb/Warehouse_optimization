@@ -210,37 +210,37 @@
   },
   "simulation_results": {
     "simulation_duration": 600.0,
-    "real_execution_time": 22.777015686035156,
+    "real_execution_time": 0.502387285232544,
     "orders_processed": 0,
-    "total_distance": 0,
-    "total_wait_time": 0.0,
+    "total_distance": 381,
+    "total_wait_time": 3.000000000000016,
     "picker_performance": [
       {
         "picker_id": "PICKER_01",
         "orders_completed": 0,
-        "distance_traveled": 0,
+        "distance_traveled": 93,
         "wait_time": 0.0,
         "efficiency": 0.0
       },
       {
         "picker_id": "PICKER_02",
         "orders_completed": 0,
-        "distance_traveled": 0,
-        "wait_time": 0.0,
+        "distance_traveled": 99,
+        "wait_time": 1.0000000000000007,
         "efficiency": 0.0
       },
       {
         "picker_id": "PICKER_03",
         "orders_completed": 0,
-        "distance_traveled": 0,
+        "distance_traveled": 95,
         "wait_time": 0.0,
         "efficiency": 0.0
       },
       {
         "picker_id": "PICKER_04",
         "orders_completed": 0,
-        "distance_traveled": 0,
-        "wait_time": 0.0,
+        "distance_traveled": 94,
+        "wait_time": 2.000000000000015,
         "efficiency": 0.0
       }
     ]
