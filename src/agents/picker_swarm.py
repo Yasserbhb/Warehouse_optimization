@@ -182,6 +182,7 @@ class WarehousePicker:
             self.current_order = order
             self.current_item_index = 0
             self.load = LoadCapacity()  # Reset load
+            print(f"🎯 {self.picker_id} assigned order {order.order_id} with {len(order.items)} items")
             self._plan_next_item()
             return True
         return False
@@ -190,14 +191,17 @@ class WarehousePicker:
         """Plan path to next item in current order"""
         if not self.current_order or self.current_item_index >= len(self.current_order.items):
             # Order complete, go to exit
+            print(f"📦 {self.picker_id} order complete, going to exit")
             self._plan_path_to_exit()
             return
         
         next_item = self.current_order.items[self.current_item_index]
+        print(f"🚀 {self.picker_id} planning path to item {next_item.item_id} at {next_item.location}")
         
         # Check if we can carry this item
         if not self.load.can_carry(next_item):
             # Go to exit first to drop off items
+            print(f"🎒 {self.picker_id} load full, going to exit first")
             self._plan_path_to_exit()
             return
         
@@ -205,6 +209,7 @@ class WarehousePicker:
         target_pos = (next_item.location[0], next_item.location[1])
         self.target_position = target_pos
         self.state = PickerState.MOVING_TO_ITEM
+        print(f"🎯 {self.picker_id} target set to {target_pos}, state: MOVING_TO_ITEM")
     
     def _plan_path_to_exit(self):
         """Plan path to warehouse exit"""
@@ -219,6 +224,10 @@ class WarehousePicker:
         """
         if self.state == PickerState.IDLE:
             return False
+        
+        # Add periodic state logging for debugging
+        if int(current_time) % 10 == 0 and current_time - self.last_move_time > 9.9:  # Every 10 seconds
+            print(f"🔄 {self.picker_id} status: {self.state.value} at {self.position}, target: {self.target_position}")
         
         elif self.state == PickerState.MOVING_TO_ITEM:
             return self._update_movement(current_time, other_pickers)
@@ -240,11 +249,17 @@ class WarehousePicker:
     def _update_movement(self, current_time: float, other_pickers: List['WarehousePicker']) -> bool:
         """Update movement towards target"""
         if not self.target_position:
+            print(f"❌ {self.picker_id} no target position!")
             return False
         
         # Check if we need to replan path
         if not self.current_path or self.path_index >= len(self.current_path):
+            print(f"🗺️ {self.picker_id} replanning path from {self.position} to {self.target_position}")
             self._replan_path(other_pickers)
+            if not self.current_path:
+                print(f"❌ {self.picker_id} NO PATH FOUND from {self.position} to {self.target_position}!")
+                return False
+            print(f"✅ {self.picker_id} found path with {len(self.current_path)} steps: {self.current_path[:3]}...")
         
         # Check if movement time has elapsed
         move_delay = 1.0 + self.load.get_movement_penalty()  # Base 1 second + load penalty
@@ -254,20 +269,24 @@ class WarehousePicker:
         
         # Check for collisions before moving
         if self._check_for_collisions(other_pickers):
+            print(f"🚧 {self.picker_id} collision detected, waiting...")
             self.state = PickerState.WAITING
             self.wait_start_time = current_time
             return False
         
         # Move to next position in path
         if self.path_index < len(self.current_path):
+            old_position = self.position
             new_position = self.current_path[self.path_index]
             self.position = new_position
             self.path_index += 1
             self.last_move_time = current_time
             self.total_distance += 1
+            print(f"👣 {self.picker_id} moved from {old_position} to {new_position} (step {self.path_index}/{len(self.current_path)})")
         
         # Check if reached target
         if self.position == self.target_position:
+            print(f"🎯 {self.picker_id} reached target {self.target_position}!")
             if self.state == PickerState.MOVING_TO_ITEM:
                 self._start_picking(current_time)
             elif self.state == PickerState.MOVING_TO_EXIT:

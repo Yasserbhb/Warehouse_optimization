@@ -20,6 +20,7 @@ sys.path.insert(0, src_dir)
 from warehouse.structure import LargeWarehouse
 from utils.data_generator import WarehouseDataGenerator, WarehouseItem
 from agents.picker_swarm import PickerSwarmManager, PickOrder, OrderItem, PickerState
+from simulation.order_generator import RealisticOrderGenerator, Season
 from shared_enums import ItemSize, WeightClass, CellType, SeasonalPattern
 
 class WarehouseSimulation:
@@ -224,77 +225,74 @@ class WarehouseSimulation:
         else:  # LIGHT
             return self.warehouse.levels
     
-    def create_sample_orders(self, num_orders: int = 20) -> List[PickOrder]:
-        """Create realistic sample orders from placed items"""
+    def generate_realistic_orders(self, num_orders: int = None, season: int = Season.AUTUMN, 
+                                day_of_week: int = 3, special_events: List[str] = None) -> List[PickOrder]:
+        """Generate realistic orders using dedicated order generator"""
         print(f"\n{'='*50}")
-        print("STEP 4: GENERATING SAMPLE ORDERS")
+        print("STEP 4: GENERATING REALISTIC ORDERS")
         print(f"{'='*50}")
         
-        orders = []
+        # Get available items for order generation
+        available_items = self.get_placed_items_for_orders()
         
-        # Create order items from placed items
-        available_order_items = []
+        if not available_items:
+            print("❌ No items available for order generation!")
+            return []
+        
+        # Create order generator
+        order_gen = RealisticOrderGenerator(available_items, random_seed=42)
+        order_gen.set_season(season)
+        
+        # Generate orders
+        orders = order_gen.generate_daily_orders(
+            num_orders=num_orders,
+            day_of_week=day_of_week,
+            special_events=special_events
+        )
+        
+        print(f"✅ Generated {len(orders)} realistic orders")
+        return orders
+    
+    def get_placed_items_for_orders(self) -> List[Dict]:
+        """Get list of placed items available for order generation"""
+        available_items = []
         for item in self.items:
             if item.id in self.item_locations:
                 location = self.item_locations[item.id]
-                order_item = OrderItem(
-                    item_id=item.id,
-                    item_name=item.name,
-                    size=item.size,
-                    location=location,
-                    pick_time=random.uniform(15, 45)  # 15-45 seconds
-                )
-                available_order_items.append(order_item)
+                item_info = {
+                    'item_id': item.id,
+                    'item_name': item.name,
+                    'size': item.size,
+                    'weight_class': item.weight_class,
+                    'category': item.category,
+                    'daily_picks': item.base_daily_picks,
+                    'seasonal_pattern': item.seasonal_pattern,
+                    'location': location,
+                    'pick_time': random.uniform(15, 45)  # 15-45 seconds
+                }
+                available_items.append(item_info)
         
-        print(f"Created {len(available_order_items)} available order items from placed inventory")
+        return available_items
+        """Get list of placed items available for order generation"""
+        available_items = []
+        for item in self.items:
+            if item.id in self.item_locations:
+                location = self.item_locations[item.id]
+                item_info = {
+                    'item_id': item.id,
+                    'item_name': item.name,
+                    'size': item.size,
+                    'weight_class': item.weight_class,
+                    'category': item.category,
+                    'daily_picks': item.base_daily_picks,
+                    'seasonal_pattern': item.seasonal_pattern,
+                    'location': location,
+                    'pick_time': random.uniform(15, 45)  # 15-45 seconds
+                }
+                available_items.append(item_info)
         
-        # Generate orders with realistic load constraints
-        for i in range(num_orders):
-            order_items = self._create_realistic_order(available_order_items)
-            
-            if order_items:
-                order = PickOrder(
-                    order_id=f"ORD_{i+1:03d}",
-                    items=order_items,
-                    priority=random.choices([1, 2, 3], weights=[70, 25, 5])[0]  # Most orders normal priority
-                )
-                orders.append(order)
-        
-        print(f"Generated {len(orders)} realistic orders")
-        
-        # Print order statistics
-        total_items = sum(len(order.items) for order in orders)
-        avg_items = total_items / len(orders) if orders else 0
-        print(f"  Average items per order: {avg_items:.1f}")
-        print(f"  Total items to pick: {total_items}")
-        
-        return orders
-    
-    def _create_realistic_order(self, available_items: List[OrderItem]) -> List[OrderItem]:
-        """Create realistic order respecting load constraints"""
-        order_items = []
-        total_points = 0
-        max_points = 4
-        
-        # Select 1-5 items for order
-        target_items = random.randint(1, 5)
-        attempts = 0
-        max_attempts = 20
-        
-        while len(order_items) < target_items and total_points < max_points and attempts < max_attempts:
-            item = random.choice(available_items)
-            attempts += 1
-            
-            # Get item points using enum
-            item_points = {ItemSize.SMALL: 1, ItemSize.MEDIUM: 2, ItemSize.LARGE: 4}[item.size]
-            
-            # Check if item fits and isn't already in order
-            if (total_points + item_points <= max_points and 
-                item.item_id not in [oi.item_id for oi in order_items]):
-                order_items.append(item)
-                total_points += item_points
-        
-        return order_items
+        print(f"Available for orders: {len(available_items)} placed items")
+        return available_items
     
     def setup_picker_swarm(self) -> PickerSwarmManager:
         """Initialize picker agents"""
@@ -406,10 +404,55 @@ class WarehouseSimulation:
             print(f"Results saved to {filepath}")
 
 
-def run_basic_simulation():
-    """Run a basic warehouse simulation"""
+def run_complete_simulation():
+    """Run complete warehouse simulation with realistic orders"""
     print("="*70)
-    print("WAREHOUSE OPTIMIZATION SIMULATION - BASIC DEMO")
+    print("COMPLETE WAREHOUSE SIMULATION - REALISTIC ORDERS")
+    print("="*70)
+    
+    # Create simulation
+    sim = WarehouseSimulation(
+        warehouse_width=30,
+        warehouse_depth=30,
+        warehouse_levels=3,
+        num_items=40,
+        num_pickers=4
+    )
+    
+    # Setup infrastructure
+    sim.setup_warehouse()
+    sim.generate_items()
+    sim.place_items_in_warehouse(placement_strategy="frequency_based")
+    sim.setup_picker_swarm()
+    
+    # Generate realistic orders
+    orders = sim.generate_realistic_orders(
+        num_orders=25,  # Reasonable number for demo
+        season=Season.AUTUMN,  # Back-to-school season
+        day_of_week=3,  # Wednesday
+        special_events=None
+    )
+    
+    if not orders:
+        print("❌ No orders generated - cannot run simulation")
+        return None
+    
+    # Run simulation
+    results = sim.run_simulation(orders, duration=600.0)  # 10 minutes
+    
+    # Display results
+    sim.print_simulation_summary()
+    sim.save_results("complete_simulation_results.json")
+    
+    print(f"\n✅ Complete simulation finished!")
+    print(f"   Orders processed: {results['orders_processed']}")
+    print(f"   Total distance: {results['total_distance']} cells")
+    print(f"   Execution time: {results['real_execution_time']:.1f} seconds")
+    
+    return sim
+    """Run a basic warehouse simulation without orders (just setup)"""
+    print("="*70)
+    print("WAREHOUSE OPTIMIZATION SIMULATION - BASIC SETUP")
     print("="*70)
     
     # Create simulation
@@ -427,15 +470,16 @@ def run_basic_simulation():
     sim.place_items_in_warehouse(placement_strategy="frequency_based")
     sim.setup_picker_swarm()
     
-    # Create and run orders
-    orders = sim.create_sample_orders(num_orders=15)
-    results = sim.run_simulation(orders, duration=600.0)  # 10 minute simulation
+    # Get available items for order generation
+    available_items = sim.get_placed_items_for_orders()
     
-    # Display results
-    sim.print_simulation_summary()
-    sim.save_results("basic_simulation_results.json")
+    print(f"\n✅ Basic warehouse setup complete!")
+    print(f"   - Warehouse: {sim.warehouse.width}x{sim.warehouse.depth}x{sim.warehouse.levels}")
+    print(f"   - Items placed: {len(sim.item_locations)}")
+    print(f"   - Pickers ready: {sim.config['num_pickers']}")
+    print(f"   - Available for orders: {len(available_items)}")
+    print(f"\n💡 Next step: Create order generator to feed realistic orders to the system!")
     
-    print(f"\n✅ Basic simulation complete!")
     return sim
 
 
@@ -465,19 +509,17 @@ def run_comparison_simulation():
         sim.place_items_in_warehouse(placement_strategy=strategy)
         sim.setup_picker_swarm()
         
-        # Run same orders for fair comparison
-        random.seed(42)  # Consistent orders
-        orders = sim.create_sample_orders(num_orders=12)
-        results = sim.run_simulation(orders, duration=480.0)  # 8 minute simulation
+        # Get available items
+        available_items = sim.get_placed_items_for_orders()
         
         # Store results
         results_comparison[strategy] = {
-            'orders_completed': results['orders_processed'],
-            'total_distance': results['total_distance'],
-            'avg_order_time': results['simulation_duration'] / results['orders_processed'] if results['orders_processed'] > 0 else 0
+            'items_placed': len(sim.item_locations),
+            'available_for_orders': len(available_items),
+            'warehouse_utilization': sim.warehouse.get_warehouse_stats()['occupancy_rate']
         }
         
-        print(f"✅ {strategy} completed: {results['orders_processed']} orders, {results['total_distance']} cells")
+        print(f"✅ {strategy} setup complete: {len(sim.item_locations)} items placed")
     
     # Print comparison
     print(f"\n{'='*60}")
@@ -485,17 +527,10 @@ def run_comparison_simulation():
     print(f"{'='*60}")
     
     for strategy, results in results_comparison.items():
-        print(f"{strategy.capitalize():15s}: {results['orders_completed']:2d} orders, "
-              f"{results['total_distance']:4d} cells, {results['avg_order_time']:5.1f}s avg")
+        print(f"{strategy.capitalize():15s}: {results['items_placed']:2d} items placed, "
+              f"{results['available_for_orders']:2d} available for orders")
     
-    # Calculate improvement
-    if len(results_comparison) == 2:
-        random_results = results_comparison['random']
-        freq_results = results_comparison['frequency_based']
-        
-        if random_results['total_distance'] > 0:
-            distance_improvement = (random_results['total_distance'] - freq_results['total_distance']) / random_results['total_distance'] * 100
-            print(f"\nFrequency-based placement improved distance by {distance_improvement:.1f}%")
+    print(f"\n💡 To complete comparison, create order generator and run simulations!")
 
 
 def main():
@@ -503,19 +538,24 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Warehouse Optimization Simulation')
-    parser.add_argument('--mode', choices=['basic', 'comparison'], default='basic',
+    parser.add_argument('--mode', choices=['setup', 'complete', 'comparison'], default='complete',
                        help='Simulation mode to run')
-    parser.add_argument('--width', type=int, default=25, help='Warehouse width')
-    parser.add_argument('--depth', type=int, default=25, help='Warehouse depth')
-    parser.add_argument('--levels', type=int, default=2, help='Warehouse levels')
-    parser.add_argument('--items', type=int, default=30, help='Number of items')
-    parser.add_argument('--pickers', type=int, default=3, help='Number of pickers')
-    parser.add_argument('--orders', type=int, default=15, help='Number of orders')
+    parser.add_argument('--width', type=int, default=30, help='Warehouse width')
+    parser.add_argument('--depth', type=int, default=30, help='Warehouse depth')
+    parser.add_argument('--levels', type=int, default=3, help='Warehouse levels')
+    parser.add_argument('--items', type=int, default=40, help='Number of items')
+    parser.add_argument('--pickers', type=int, default=4, help='Number of pickers')
+    parser.add_argument('--orders', type=int, default=25, help='Number of orders')
     parser.add_argument('--duration', type=float, default=600.0, help='Simulation duration (seconds)')
+    parser.add_argument('--season', type=int, choices=[1,2,3,4], default=4, 
+                       help='Season: 1=Winter, 2=Spring, 3=Summer, 4=Autumn')
     
     args = parser.parse_args()
     
-    if args.mode == 'basic':
+    if args.mode == 'setup':
+        sim, orders = run_basic_setup()
+        
+    elif args.mode == 'complete':
         sim = WarehouseSimulation(
             warehouse_width=args.width,
             warehouse_depth=args.depth,
@@ -524,23 +564,32 @@ def main():
             num_pickers=args.pickers
         )
         
+        # Full pipeline
         sim.setup_warehouse()
         sim.generate_items()
         sim.place_items_in_warehouse(placement_strategy="frequency_based")
         sim.setup_picker_swarm()
         
-        orders = sim.create_sample_orders(num_orders=args.orders)
-        sim.run_simulation(orders, duration=args.duration)
-        sim.print_simulation_summary()
-        sim.save_results()
+        orders = sim.generate_realistic_orders(
+            num_orders=args.orders,
+            season=args.season,
+            day_of_week=3  # Wednesday
+        )
         
+        if orders:
+            results = sim.run_simulation(orders, duration=args.duration)
+            sim.print_simulation_summary()
+            sim.save_results()
+        else:
+            print("❌ No orders generated - simulation aborted")
+            
     elif args.mode == 'comparison':
         run_comparison_simulation()
 
 
 if __name__ == "__main__":
-    # Run basic simulation if no arguments provided
+    # Run complete simulation if no arguments provided
     if len(sys.argv) == 1:
-        run_basic_simulation()
+        run_complete_simulation()
     else:
         main()
